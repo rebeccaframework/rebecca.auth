@@ -14,6 +14,15 @@ long_description = (
     open('CHANGES.txt').read()
     + '\n')
 
+requires = [
+    'pyramid',
+]
+
+tests_require = [
+    'nose',
+    'coverage',
+]
+
 setup(name='rebecca.auth',
       version=version,
       description="",
@@ -33,11 +42,11 @@ setup(name='rebecca.auth',
       namespace_packages=['rebecca'],
       include_package_data=True,
       zip_safe=False,
-      install_requires=[
-          'setuptools',
-          # -*- Extra requirements: -*-
-      ],
-      entry_points="""
-      # -*- Entry points: -*-
-      """,
+      install_requires=requires,
+      tests_require=tests_require,
+      extras_require={
+        "testing": tests_require,
+        "docs": ["sphinx"],
+      },
+      test_suite='rebecca.auth',
       )
